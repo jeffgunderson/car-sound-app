@@ -1,0 +1,473 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		164C3D5FACC1746CF90638C6 /* SoundEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31552C778F732D6DFA23EED /* SoundEngine.swift */; };
+		1846B1A41E31443DE3C630DA /* V8_jeff_high.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A48B16D9A5E193D6034BC30 /* V8_jeff_high.wav */; };
+		2BB4CBF537BFED7D7C385ED3 /* SynthPatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EAC8E158AFFFCDBF7C56FD /* SynthPatch.swift */; };
+		2BB63DC8580FDD45C0A0260E /* VLinkerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE84E23D0A97193DF3BCB8D /* VLinkerProvider.swift */; };
+		2F1E874841A928445028A85E /* SynthTunerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32D73317506F69322C39F54 /* SynthTunerView.swift */; };
+		3AF13F1CB8E60FF5839B8E6E /* trd_v6_aggressive_high.wav in Resources */ = {isa = PBXBuildFile; fileRef = 02ABC719F6BA9483AC379367 /* trd_v6_aggressive_high.wav */; };
+		427837BA9718408E066A24DE /* trd_v6_aggressive_idle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61948CFFE21F902BB9F12DFF /* trd_v6_aggressive_idle.wav */; };
+		43B379466384F20C75A818F4 /* SimulatorVehicleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61985BCF8BF40AB33CBAB9FB /* SimulatorVehicleProvider.swift */; };
+		4B4EE0F9D2673A6B8D867015 /* trd_v8_deep_idle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 43756C4C04CB0EBD84471148 /* trd_v8_deep_idle.wav */; };
+		6EE62A0B078CA8738E3BC699 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B8DD51708623C540CD7C7 /* SettingsView.swift */; };
+		76BED9B9D9EF67C035742A67 /* CarSoundAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0782CB91E63ACA8D29748C50 /* CarSoundAppApp.swift */; };
+		7E5C8AE59DAFF9DCD02AF4C6 /* trd_v8_deep_high.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8257A2C32B0D5A26D356B3B8 /* trd_v8_deep_high.wav */; };
+		7FD1805E32614B8C61480B93 /* trd_v8_deep_cruise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC52B466308B5322414659C /* trd_v8_deep_cruise.wav */; };
+		897D2ABEC0F2EC740F87021F /* V8_jeff_cruise.wav in Resources */ = {isa = PBXBuildFile; fileRef = C4C7E7C41E74978835C250B6 /* V8_jeff_cruise.wav */; };
+		91D51EAACE6E6C36C1293E32 /* EngineSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216E088AA51FD965D3C8BCCB /* EngineSynthesizer.swift */; };
+		9ECDE26BAFAA47FDE008CC24 /* VehicleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EAAA17CAF4918F39910007 /* VehicleState.swift */; };
+		A34A20AC658877A9A2B810DB /* trd_v6_aggressive_cruise.wav in Resources */ = {isa = PBXBuildFile; fileRef = C3E35469EFD042B402035E5B /* trd_v6_aggressive_cruise.wav */; };
+		B651B88423B476F8AE32D4EC /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0239676A190439FA66BE5F /* AppViewModel.swift */; };
+		B885F34473BC5F5B2368828B /* SoundProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9658168CAD67B8EE3EE5E20C /* SoundProfile.swift */; };
+		C259200AC0E465C99E05FBF4 /* VehicleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52864E92287F5C485FDB10B /* VehicleDataProvider.swift */; };
+		C761264041D234F3ACA17AF9 /* trd_v6_balanced_cruise.wav in Resources */ = {isa = PBXBuildFile; fileRef = F31B3E51A845C62350627181 /* trd_v6_balanced_cruise.wav */; };
+		D1FFF1E3D5C175A04EC31DEA /* V8_jeff_idle.wav in Resources */ = {isa = PBXBuildFile; fileRef = E4905FE5DF6C7E69BA1C9BD6 /* V8_jeff_idle.wav */; };
+		D34620BC7AFA01C9BACA58F6 /* ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448920CC9B28D9D61AE6C88 /* ConnectionStatus.swift */; };
+		D3969955A6BE823F5B5B3774 /* trd_v6_balanced_idle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 020D995C69F59A8782A53AF0 /* trd_v6_balanced_idle.wav */; };
+		DAEB8DB2B709E98DAB8AF2A6 /* trd_v6_balanced_high.wav in Resources */ = {isa = PBXBuildFile; fileRef = E96E57FE9257E1E93CA82396 /* trd_v6_balanced_high.wav */; };
+		E1A88E4410D88DAFA971760A /* DevSimulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E324FEBAFE8B86BE5F5D661 /* DevSimulatorView.swift */; };
+		E95F9BD69197AF1A45CADCA0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F832AD05FE9BDF74EAF51D /* MainView.swift */; };
+		F46AD461C5AA4579DEEC1028 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B26D7406D8499AEC79BBD /* AppSettings.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		020D995C69F59A8782A53AF0 /* trd_v6_balanced_idle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v6_balanced_idle.wav; sourceTree = "<group>"; };
+		02ABC719F6BA9483AC379367 /* trd_v6_aggressive_high.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v6_aggressive_high.wav; sourceTree = "<group>"; };
+		0782CB91E63ACA8D29748C50 /* CarSoundAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSoundAppApp.swift; sourceTree = "<group>"; };
+		0DC52B466308B5322414659C /* trd_v8_deep_cruise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v8_deep_cruise.wav; sourceTree = "<group>"; };
+		11EAC8E158AFFFCDBF7C56FD /* SynthPatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthPatch.swift; sourceTree = "<group>"; };
+		1F4B8DD51708623C540CD7C7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		20EAAA17CAF4918F39910007 /* VehicleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleState.swift; sourceTree = "<group>"; };
+		216E088AA51FD965D3C8BCCB /* EngineSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineSynthesizer.swift; sourceTree = "<group>"; };
+		2E324FEBAFE8B86BE5F5D661 /* DevSimulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevSimulatorView.swift; sourceTree = "<group>"; };
+		3D0239676A190439FA66BE5F /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		43756C4C04CB0EBD84471148 /* trd_v8_deep_idle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v8_deep_idle.wav; sourceTree = "<group>"; };
+		61948CFFE21F902BB9F12DFF /* trd_v6_aggressive_idle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v6_aggressive_idle.wav; sourceTree = "<group>"; };
+		61985BCF8BF40AB33CBAB9FB /* SimulatorVehicleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorVehicleProvider.swift; sourceTree = "<group>"; };
+		6FE84E23D0A97193DF3BCB8D /* VLinkerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VLinkerProvider.swift; sourceTree = "<group>"; };
+		8257A2C32B0D5A26D356B3B8 /* trd_v8_deep_high.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v8_deep_high.wav; sourceTree = "<group>"; };
+		9658168CAD67B8EE3EE5E20C /* SoundProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProfile.swift; sourceTree = "<group>"; };
+		9A48B16D9A5E193D6034BC30 /* V8_jeff_high.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = V8_jeff_high.wav; sourceTree = "<group>"; };
+		A32D73317506F69322C39F54 /* SynthTunerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthTunerView.swift; sourceTree = "<group>"; };
+		C3E35469EFD042B402035E5B /* trd_v6_aggressive_cruise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v6_aggressive_cruise.wav; sourceTree = "<group>"; };
+		C4C7E7C41E74978835C250B6 /* V8_jeff_cruise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = V8_jeff_cruise.wav; sourceTree = "<group>"; };
+		D52864E92287F5C485FDB10B /* VehicleDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataProvider.swift; sourceTree = "<group>"; };
+		E31552C778F732D6DFA23EED /* SoundEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEngine.swift; sourceTree = "<group>"; };
+		E3F832AD05FE9BDF74EAF51D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E448920CC9B28D9D61AE6C88 /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
+		E4905FE5DF6C7E69BA1C9BD6 /* V8_jeff_idle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = V8_jeff_idle.wav; sourceTree = "<group>"; };
+		E67B26D7406D8499AEC79BBD /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		E96E57FE9257E1E93CA82396 /* trd_v6_balanced_high.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v6_balanced_high.wav; sourceTree = "<group>"; };
+		F31B3E51A845C62350627181 /* trd_v6_balanced_cruise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v6_balanced_cruise.wav; sourceTree = "<group>"; };
+		FB2D8CD1473A7CC7295B269F /* CarSoundApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CarSoundApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2D3C8465306725B356286EDC /* TundraTRD */ = {
+			isa = PBXGroup;
+			children = (
+				C3E35469EFD042B402035E5B /* trd_v6_aggressive_cruise.wav */,
+				02ABC719F6BA9483AC379367 /* trd_v6_aggressive_high.wav */,
+				61948CFFE21F902BB9F12DFF /* trd_v6_aggressive_idle.wav */,
+				F31B3E51A845C62350627181 /* trd_v6_balanced_cruise.wav */,
+				E96E57FE9257E1E93CA82396 /* trd_v6_balanced_high.wav */,
+				020D995C69F59A8782A53AF0 /* trd_v6_balanced_idle.wav */,
+				0DC52B466308B5322414659C /* trd_v8_deep_cruise.wav */,
+				8257A2C32B0D5A26D356B3B8 /* trd_v8_deep_high.wav */,
+				43756C4C04CB0EBD84471148 /* trd_v8_deep_idle.wav */,
+				C4C7E7C41E74978835C250B6 /* V8_jeff_cruise.wav */,
+				9A48B16D9A5E193D6034BC30 /* V8_jeff_high.wav */,
+				E4905FE5DF6C7E69BA1C9BD6 /* V8_jeff_idle.wav */,
+			);
+			name = TundraTRD;
+			path = CarSoundApp/Resources/Sounds/TundraTRD;
+			sourceTree = "<group>";
+		};
+		3CB3EE30896928836EB0D590 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E67B26D7406D8499AEC79BBD /* AppSettings.swift */,
+				E448920CC9B28D9D61AE6C88 /* ConnectionStatus.swift */,
+				9658168CAD67B8EE3EE5E20C /* SoundProfile.swift */,
+				11EAC8E158AFFFCDBF7C56FD /* SynthPatch.swift */,
+				20EAAA17CAF4918F39910007 /* VehicleState.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3DBEBE81CEB9D412179B9EDF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0782CB91E63ACA8D29748C50 /* CarSoundAppApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		446B4E1EB0E83F04D6C0FA9E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2E324FEBAFE8B86BE5F5D661 /* DevSimulatorView.swift */,
+				E3F832AD05FE9BDF74EAF51D /* MainView.swift */,
+				1F4B8DD51708623C540CD7C7 /* SettingsView.swift */,
+				A32D73317506F69322C39F54 /* SynthTunerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9F2D48FD909E3B1B88D84C76 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3D0239676A190439FA66BE5F /* AppViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A6618CFA786A5021874E3E78 = {
+			isa = PBXGroup;
+			children = (
+				B8C5E7427C1B3A7EA672C240 /* CarSoundApp */,
+				2D3C8465306725B356286EDC /* TundraTRD */,
+				C42A8DBC491C4B69CCFBCCC2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B3EC1F9A8C124A19754A4AEA /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				61985BCF8BF40AB33CBAB9FB /* SimulatorVehicleProvider.swift */,
+				D52864E92287F5C485FDB10B /* VehicleDataProvider.swift */,
+				6FE84E23D0A97193DF3BCB8D /* VLinkerProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		B8C5E7427C1B3A7EA672C240 /* CarSoundApp */ = {
+			isa = PBXGroup;
+			children = (
+				3DBEBE81CEB9D412179B9EDF /* App */,
+				F261D61DAA74D0309F566409 /* Audio */,
+				3CB3EE30896928836EB0D590 /* Models */,
+				B3EC1F9A8C124A19754A4AEA /* Providers */,
+				9F2D48FD909E3B1B88D84C76 /* ViewModels */,
+				446B4E1EB0E83F04D6C0FA9E /* Views */,
+			);
+			path = CarSoundApp;
+			sourceTree = "<group>";
+		};
+		C42A8DBC491C4B69CCFBCCC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB2D8CD1473A7CC7295B269F /* CarSoundApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F261D61DAA74D0309F566409 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				216E088AA51FD965D3C8BCCB /* EngineSynthesizer.swift */,
+				E31552C778F732D6DFA23EED /* SoundEngine.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0F64A349D0B1AE6E64F4FB39 /* CarSoundApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C8504F67AC54910757CE74A /* Build configuration list for PBXNativeTarget "CarSoundApp" */;
+			buildPhases = (
+				B79BAC848844565E2ACD4B0B /* Sources */,
+				C7D53F7F838A85D659F94A5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CarSoundApp;
+			packageProductDependencies = (
+			);
+			productName = CarSoundApp;
+			productReference = FB2D8CD1473A7CC7295B269F /* CarSoundApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FB9B3580E5C63D43C40564AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					0F64A349D0B1AE6E64F4FB39 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = 76606BEA870156DFF761FC38 /* Build configuration list for PBXProject "CarSoundApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = A6618CFA786A5021874E3E78;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = C42A8DBC491C4B69CCFBCCC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0F64A349D0B1AE6E64F4FB39 /* CarSoundApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C7D53F7F838A85D659F94A5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				897D2ABEC0F2EC740F87021F /* V8_jeff_cruise.wav in Resources */,
+				1846B1A41E31443DE3C630DA /* V8_jeff_high.wav in Resources */,
+				D1FFF1E3D5C175A04EC31DEA /* V8_jeff_idle.wav in Resources */,
+				A34A20AC658877A9A2B810DB /* trd_v6_aggressive_cruise.wav in Resources */,
+				3AF13F1CB8E60FF5839B8E6E /* trd_v6_aggressive_high.wav in Resources */,
+				427837BA9718408E066A24DE /* trd_v6_aggressive_idle.wav in Resources */,
+				C761264041D234F3ACA17AF9 /* trd_v6_balanced_cruise.wav in Resources */,
+				DAEB8DB2B709E98DAB8AF2A6 /* trd_v6_balanced_high.wav in Resources */,
+				D3969955A6BE823F5B5B3774 /* trd_v6_balanced_idle.wav in Resources */,
+				7FD1805E32614B8C61480B93 /* trd_v8_deep_cruise.wav in Resources */,
+				7E5C8AE59DAFF9DCD02AF4C6 /* trd_v8_deep_high.wav in Resources */,
+				4B4EE0F9D2673A6B8D867015 /* trd_v8_deep_idle.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B79BAC848844565E2ACD4B0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F46AD461C5AA4579DEEC1028 /* AppSettings.swift in Sources */,
+				B651B88423B476F8AE32D4EC /* AppViewModel.swift in Sources */,
+				76BED9B9D9EF67C035742A67 /* CarSoundAppApp.swift in Sources */,
+				D34620BC7AFA01C9BACA58F6 /* ConnectionStatus.swift in Sources */,
+				E1A88E4410D88DAFA971760A /* DevSimulatorView.swift in Sources */,
+				91D51EAACE6E6C36C1293E32 /* EngineSynthesizer.swift in Sources */,
+				E95F9BD69197AF1A45CADCA0 /* MainView.swift in Sources */,
+				6EE62A0B078CA8738E3BC699 /* SettingsView.swift in Sources */,
+				43B379466384F20C75A818F4 /* SimulatorVehicleProvider.swift in Sources */,
+				164C3D5FACC1746CF90638C6 /* SoundEngine.swift in Sources */,
+				B885F34473BC5F5B2368828B /* SoundProfile.swift in Sources */,
+				2BB4CBF537BFED7D7C385ED3 /* SynthPatch.swift in Sources */,
+				2F1E874841A928445028A85E /* SynthTunerView.swift in Sources */,
+				2BB63DC8580FDD45C0A0260E /* VLinkerProvider.swift in Sources */,
+				C259200AC0E465C99E05FBF4 /* VehicleDataProvider.swift in Sources */,
+				9ECDE26BAFAA47FDE008CC24 /* VehicleState.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		395204C50C7AEFE5E1090DBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Active Engine Sound";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to vLinker OBD-II adapter for live vehicle data.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to vLinker OBD-II adapter for live vehicle data.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeffgunderson.CarSoundApp;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5D26A558114A0461AD68178E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		76BFF27054ADEBDF37DCFB6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Active Engine Sound";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to vLinker OBD-II adapter for live vehicle data.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to vLinker OBD-II adapter for live vehicle data.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeffgunderson.CarSoundApp;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D27830369D672CC978F655D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		76606BEA870156DFF761FC38 /* Build configuration list for PBXProject "CarSoundApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D26A558114A0461AD68178E /* Debug */,
+				D27830369D672CC978F655D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9C8504F67AC54910757CE74A /* Build configuration list for PBXNativeTarget "CarSoundApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76BFF27054ADEBDF37DCFB6F /* Debug */,
+				395204C50C7AEFE5E1090DBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FB9B3580E5C63D43C40564AB /* Project object */;
+}
