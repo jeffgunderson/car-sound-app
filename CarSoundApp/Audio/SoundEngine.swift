@@ -25,6 +25,8 @@ final class SoundEngine {
 
     private let rpmSmoothing: Double = 0.15
     private let throttleSmoothing: Double = 0.2
+    private let minPlaybackRate: Float = 0.25
+    private let maxPlaybackRate: Float = 4.0
 
     func configureSession() throws {
         let session = AVAudioSession.sharedInstance()
@@ -51,14 +53,30 @@ final class SoundEngine {
             try loadSampleLoops(for: profile)
             debugStatus = "Loaded \(profile.name) · 3 loops"
         case .synthesized(let cylinders):
-            let synth = EngineSynthesizer(cylinders: cylinders)
+            let baseURL: URL?
+            if let sampleName = profile.baseSampleName {
+                baseURL = SoundPackCatalog.baseSampleURL(named: sampleName)
+                if baseURL == nil {
+                    logger.error("Missing base sample: \(sampleName).wav")
+                    throw SoundEngineError.missingSample(sampleName)
+                }
+            } else {
+                baseURL = nil
+            }
+
+            let synth = EngineSynthesizer(
+                cylinders: cylinders,
+                baseSampleURL: baseURL,
+                baseSampleReferenceRPM: profile.baseSampleReferenceRPM ?? profile.idleRPM
+            )
             synthPatch = patchOverride ?? SynthPatch.forProfile(profile)
             synth.configure(patch: synthPatch, masterVolume: masterVolume)
             synth.update(rpm: targetRPM, throttle: targetThrottle, masterVolume: masterVolume)
             synthesizer = synth
             usesSynthesizer = true
-            debugStatus = "Loaded \(profile.name) · synthesizer"
-            logger.info("Loaded synthesizer profile with \(cylinders) cylinders")
+            let sampleNote = synth.usesBaseSample ? " · sample base" : ""
+            debugStatus = "Loaded \(profile.name) · synthesizer\(sampleNote)"
+            logger.info("Loaded synthesizer profile with \(cylinders) cylinders\(sampleNote)")
         }
 
         isConfigured = true
@@ -209,12 +227,13 @@ final class SoundEngine {
             if isPlaying, let synth = synthesizer {
                 let d = synth.snapshotDiagnostics()
                 debugStatus = String(
-                    format: "Playing · synth · %.0f rpm · %.0f%% thr · pitch %.0f · %.0f/%.0f Hz",
+                    format: "Playing · synth · %.0f rpm · %.0f%% thr · pitch %.0f · %.0f/%.0f Hz · sample %.2fx",
                     smoothedRPM,
                     smoothedThrottle,
                     d.pitchRPM,
                     d.crankHz,
-                    d.firingHz
+                    d.firingHz,
+                    d.sampleRate
                 )
             }
         } else {
@@ -235,11 +254,20 @@ final class SoundEngine {
         let intensity = Float(0.6 + clampedRPM * 0.3 + throttleFactor * 0.4)
         let master = intensity * masterVolume
 
-        let weights = crossfadeWeights(normalizedRPM: clampedRPM)
+        let weights = crossfadeWeights(rpm: smoothedRPM, profile: profile)
+        let crossfade = profile.resolvedLoopCrossfade
+        let timbre = profile.resolvedLoopTimbre
+        let idleBaseHz = timbre.idleHz
 
         for tier in EngineLoopTier.allCases {
             guard let player = loopPlayers[tier] else { continue }
-            player.rate = 1.0
+            player.rate = playbackRate(
+                rpm: smoothedRPM,
+                tier: tier,
+                crossfade: crossfade,
+                timbre: timbre,
+                idleBaseHz: idleBaseHz
+            )
             player.volume = (weights[tier] ?? 0) * master
         }
 
@@ -247,20 +275,37 @@ final class SoundEngine {
             let idlePct = Int((weights[.idle] ?? 0) * 100)
             let cruisePct = Int((weights[.cruise] ?? 0) * 100)
             let highPct = Int((weights[.high] ?? 0) * 100)
-            debugStatus = "Playing · \(Int(smoothedRPM)) rpm · \(Int(smoothedThrottle))% thr · mix \(idlePct)/\(cruisePct)/\(highPct)"
+            let pitchRate = crossfade.idlePeakRPM > 0
+                ? Float(smoothedRPM / crossfade.idlePeakRPM)
+                : 1.0
+            debugStatus = "Playing · \(Int(smoothedRPM)) rpm · \(Int(smoothedThrottle))% thr · mix \(idlePct)/\(cruisePct)/\(highPct) · pitch \(String(format: "%.2f", pitchRate))x"
         }
     }
 
-    private func crossfadeWeights(normalizedRPM: Double) -> [EngineLoopTier: Float] {
-        let n = normalizedRPM
+    /// Scales each loop so all tiers track the same RPM→pitch curve during crossfades.
+    private func playbackRate(
+        rpm: Double,
+        tier: EngineLoopTier,
+        crossfade: SampleLoopCrossfade,
+        timbre: LoopTierTimbre,
+        idleBaseHz: Double
+    ) -> Float {
+        let tierBaseHz = timbre.baseHz(for: tier)
+        guard crossfade.idlePeakRPM > 0, tierBaseHz > 0, idleBaseHz > 0 else { return 1.0 }
+        let rate = (rpm / crossfade.idlePeakRPM) * (idleBaseHz / tierBaseHz)
+        return min(max(Float(rate), minPlaybackRate), maxPlaybackRate)
+    }
 
-        let idle = fadeOut(n, start: 0.0, end: 0.35)
-        let high = fadeIn(n, start: 0.55, end: 0.85)
-        var cruise = max(0.0, 1.0 - idle - high)
+    private func crossfadeWeights(rpm: Double, profile: SoundProfile) -> [EngineLoopTier: Float] {
+        let crossfade = profile.resolvedLoopCrossfade
+        let halfBlend = max(crossfade.blendWidthRPM / 2, 1)
 
-        if n >= 0.25 && n <= 0.75 {
-            cruise = max(cruise, 0.35)
-        }
+        let idleToCruise = (crossfade.idlePeakRPM + crossfade.cruisePeakRPM) / 2
+        let cruiseToHigh = (crossfade.cruisePeakRPM + crossfade.highPeakRPM) / 2
+
+        let idle = 1.0 - smoothstep(idleToCruise - halfBlend, idleToCruise + halfBlend, rpm)
+        let high = smoothstep(cruiseToHigh - halfBlend, cruiseToHigh + halfBlend, rpm)
+        let cruise = max(0.0, 1.0 - idle - high)
 
         let sum = idle + cruise + high
         guard sum > 0.001 else {
@@ -274,16 +319,10 @@ final class SoundEngine {
         ]
     }
 
-    private func fadeOut(_ value: Double, start: Double, end: Double) -> Double {
-        if value <= start { return 1.0 }
-        if value >= end { return 0.0 }
-        return 1.0 - (value - start) / (end - start)
-    }
-
-    private func fadeIn(_ value: Double, start: Double, end: Double) -> Double {
-        if value <= start { return 0.0 }
-        if value >= end { return 1.0 }
-        return (value - start) / (end - start)
+    private func smoothstep(_ edge0: Double, _ edge1: Double, _ value: Double) -> Double {
+        guard edge1 > edge0 else { return value >= edge1 ? 1 : 0 }
+        let t = min(max((value - edge0) / (edge1 - edge0), 0), 1)
+        return t * t * (3 - 2 * t)
     }
 }
 

@@ -164,10 +164,46 @@ struct SynthPatch: Codable, Equatable, Sendable {
         revMixScale: 2.8
     )
 
+    /// Sample-driven TRD V8 — pitches `trd_v8_deep_idle` with RPM and adds light synth harmonic support.
+    static let trdV8Sample = SynthPatch(
+        pitchIdleRPM: 650,
+        pitchMaxRPM: 2_800,
+        displayIdleRPM: 650,
+        displayMaxRPM: 5800,
+        rumbleEmphasis: 0.55,
+        firingEmphasis: 0.70,
+        rumbleVariation: 0.15,
+        crank0625Gain: 0.30,
+        crank125Gain: 0.36,
+        crank25Gain: 0.28,
+        crank50Gain: 0.22,
+        firing0625Gain: 0.28,
+        firing125Gain: 0.32,
+        firing25Gain: 0.30,
+        firing50Gain: 0.28,
+        revFiring50Gain: 0.22,
+        revCrank50Gain: 0.14,
+        baseIntensity: 0.55,
+        rpmIntensityGain: 0.35,
+        throttleIntensityGain: 0.18,
+        outputGain: 0.72,
+        filterCutoffBase: 70,
+        filterCutoffRPMGain: 90,
+        filterCutoffThrottleGain: 20,
+        rpmSmoothing: 0.12,
+        throttleSmoothing: 0.18,
+        minCrankHz: 2.0,
+        minFiringHz: 3.0,
+        revMixPower: 1.4,
+        revMixScale: 2.4
+    )
+
     static func factoryPatch(for profileID: String) -> SynthPatch? {
         switch profileID {
         case "synth-v8-v2":
             return .jeffV2
+        case "synth-trd-v8":
+            return .trdV8Sample
         default:
             return nil
         }

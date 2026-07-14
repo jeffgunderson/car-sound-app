@@ -20,6 +20,9 @@ struct SynthTunerView: View {
                         LabeledContent("Pitch RPM", value: String(format: "%.0f", d.pitchRPM))
                         LabeledContent("Crank Hz", value: String(format: "%.1f", d.crankHz))
                         LabeledContent("Firing Hz", value: String(format: "%.1f", d.firingHz))
+                        if viewModel.selectedProfile.baseSampleName != nil {
+                            LabeledContent("Sample rate", value: String(format: "%.2fx", d.sampleRate))
+                        }
                     } else {
                         Text("Press Play on the main screen to hear changes in real time.")
                             .font(.footnote)
@@ -28,27 +31,37 @@ struct SynthTunerView: View {
                 } header: {
                     Text("Live Output")
                 } footer: {
-                    Text("Pitch RPM is the acoustic RPM used for sound. Crank Hz is crankshaft speed; firing Hz is how often cylinders pulse.")
+                    if viewModel.selectedProfile.baseSampleName != nil {
+                        Text("Pitch RPM drives both the TRD idle sample rate and the synth layers. Sample rate 1.0× is the native idle clip (~720 RPM).")
+                    } else {
+                        Text("Pitch RPM is the acoustic RPM used for sound. Crank Hz is crankshaft speed; firing Hz is how often cylinders pulse.")
+                    }
                 }
 
                 Section {
                     SynthKnob(
                         "Rumble emphasis",
-                        description: "Overall volume of the deep crank rumble — the slow shaking you feel more than hear.",
+                        description: viewModel.selectedProfile.baseSampleName != nil
+                            ? "Scales the TRD idle sample body and the deep crank rumble layers under it."
+                            : "Overall volume of the deep crank rumble — the slow shaking you feel more than hear.",
                         value: $viewModel.synthPatch.rumbleEmphasis,
                         range: 0...3,
                         step: 0.05
                     )
                     SynthKnob(
                         "Firing emphasis",
-                        description: "Overall volume of the cylinder firing pulse — the rhythmic beat layered on top of rumble.",
+                        description: viewModel.selectedProfile.baseSampleName != nil
+                            ? "Scales the cylinder-pulse synth layers mixed on top of the TRD sample."
+                            : "Overall volume of the cylinder firing pulse — the rhythmic beat layered on top of rumble.",
                         value: $viewModel.synthPatch.firingEmphasis,
                         range: 0...3,
                         step: 0.05
                     )
                     SynthKnob(
                         "Rumble variation",
-                        description: "Adds slow random drift to the rumble so it feels less perfectly steady. Try 0.2–0.5 for subtle organic idle.",
+                        description: viewModel.selectedProfile.baseSampleName != nil
+                            ? "Adds drift to sample playback rate and amplitude so the idle loop feels less locked."
+                            : "Adds slow random drift to the rumble so it feels less perfectly steady. Try 0.2–0.5 for subtle organic idle.",
                         value: $viewModel.synthPatch.rumbleVariation,
                         range: 0...1,
                         step: 0.05
@@ -62,28 +75,28 @@ struct SynthTunerView: View {
                         "Pitch idle RPM",
                         description: "How low the tone sounds at idle. Lower = deeper rumble. This is acoustic pitch, not the slider RPM.",
                         value: $viewModel.synthPatch.pitchIdleRPM,
-                        range: 80...800,
+                        range: 80...1_200,
                         step: 10
                     )
                     SynthKnob(
                         "Pitch max RPM",
                         description: "How high the tone reaches at redline. Maps the top of the RPM slider to this acoustic pitch.",
                         value: $viewModel.synthPatch.pitchMaxRPM,
-                        range: 300...2000,
+                        range: 300...4_000,
                         step: 10
                     )
                     SynthKnob(
                         "Display idle RPM",
                         description: "Where the RPM slider considers “idle” for volume and blend calculations (0% of rev range).",
                         value: $viewModel.synthPatch.displayIdleRPM,
-                        range: 400...1200,
+                        range: 400...1_500,
                         step: 50
                     )
                     SynthKnob(
                         "Display max RPM",
                         description: "Where the RPM slider hits 100% of the rev range for volume and blend.",
                         value: $viewModel.synthPatch.displayMaxRPM,
-                        range: 3000...8000,
+                        range: 3_000...8_000,
                         step: 100
                     )
                 } header: {
@@ -200,7 +213,9 @@ struct SynthTunerView: View {
                 Section {
                     SynthKnob(
                         "Base intensity",
-                        description: "Overall loudness at idle regardless of RPM or throttle.",
+                        description: viewModel.selectedProfile.baseSampleName != nil
+                            ? "Overall loudness of the TRD sample and synth layers at idle."
+                            : "Overall loudness at idle regardless of RPM or throttle.",
                         value: $viewModel.synthPatch.baseIntensity,
                         range: 0...1.5,
                         step: 0.01
@@ -235,7 +250,7 @@ struct SynthTunerView: View {
                         "Cutoff base (Hz)",
                         description: "Low-pass filter at idle — lower values keep only deep bass; higher allows more low-mid.",
                         value: $viewModel.synthPatch.filterCutoffBase,
-                        range: 20...120,
+                        range: 20...250,
                         step: 1,
                         unit: " Hz"
                     )
@@ -243,7 +258,7 @@ struct SynthTunerView: View {
                         "Cutoff + RPM (Hz)",
                         description: "How much the filter opens as RPM increases — lets more frequencies through when revving.",
                         value: $viewModel.synthPatch.filterCutoffRPMGain,
-                        range: 0...150,
+                        range: 0...250,
                         step: 1,
                         unit: " Hz"
                     )
