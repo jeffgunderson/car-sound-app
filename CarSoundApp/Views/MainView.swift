@@ -2,72 +2,44 @@ import SwiftUI
 
 struct MainView: View {
     @Environment(AppViewModel.self) private var viewModel
+    @State private var selectedProfileID: String = SoundPackCatalog.defaultProfile.id
 
     var body: some View {
         @Bindable var viewModel = viewModel
 
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    hero
+            ZStack {
+                RailwayBackground()
 
-                    connectionBadge
+                VStack(spacing: 0) {
+                    Spacer(minLength: 12)
+
+                    profileCarousel
+                        .frame(height: 220)
+
+                    Spacer(minLength: 28)
+
+                    connectionLine
+                        .padding(.bottom, 28)
 
                     if let audioErrorMessage = viewModel.audioErrorMessage {
-                        RailwayCard {
-                            Text(audioErrorMessage)
-                                .font(RailwayTheme.caption)
-                                .foregroundStyle(RailwayTheme.statusUnavailable)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
+                        Text(audioErrorMessage)
+                            .font(RailwayTheme.caption)
+                            .foregroundStyle(RailwayTheme.statusUnavailable)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 32)
+                            .padding(.bottom, 20)
                     }
 
-                    profileCard
-                    volumeCard(volume: $viewModel.masterVolume)
+                    playButton
+                        .padding(.bottom, 36)
 
-                    if viewModel.devModeEnabled, viewModel.selectedProfile.isSynthesized {
-                        NavigationLink {
-                            SynthTunerView()
-                        } label: {
-                            Label("Synth Tuner", systemImage: "slider.horizontal.3")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(RailwayGhostButtonStyle())
-                    }
+                    volumeSection(volume: $viewModel.masterVolume)
+                        .padding(.horizontal, 40)
 
-                    Button {
-                        viewModel.togglePlayback()
-                    } label: {
-                        Label(
-                            viewModel.isPlaying ? "Stop" : "Play",
-                            systemImage: viewModel.isPlaying ? "stop.fill" : "play.fill"
-                        )
-                    }
-                    .buttonStyle(RailwayPlaybackButtonStyle(isPlaying: viewModel.isPlaying))
-
-                    if !viewModel.audioDebugStatus.isEmpty {
-                        RailwayCard(padding: 12, cornerRadius: RailwayTheme.radiusControl + 4) {
-                            Text(viewModel.audioDebugStatus)
-                                .font(RailwayTheme.captionMedium)
-                                .foregroundStyle(RailwayTheme.ink)
-                                .monospacedDigit()
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                    }
-
-                    if viewModel.devModeEnabled {
-                        DevSimulatorView()
-                    }
+                    Spacer(minLength: 48)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 20)
-                .padding(.top, 8)
-                .padding(.bottom, 32)
-            }
-            .scrollContentBackground(.hidden)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background {
-                RailwayBackground()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -75,7 +47,7 @@ struct MainView: View {
                         SettingsView()
                     } label: {
                         Image(systemName: "gearshape")
-                            .font(RailwayTheme.ui(16, weight: .medium))
+                            .font(.system(size: 16, weight: .medium))
                             .foregroundStyle(RailwayTheme.inkSecondary)
                     }
                 }
@@ -83,93 +55,92 @@ struct MainView: View {
             .toolbarBackground(.hidden, for: .navigationBar)
             .navigationBarTitleDisplayMode(.inline)
             .railwayClearNavigationBackground()
+            .onAppear {
+                selectedProfileID = viewModel.selectedProfile.id
+            }
+            .onChange(of: viewModel.selectedProfile.id) { _, newID in
+                if selectedProfileID != newID {
+                    selectedProfileID = newID
+                }
+            }
+            .onChange(of: selectedProfileID) { _, newID in
+                guard newID != viewModel.selectedProfile.id,
+                      let profile = viewModel.soundProfiles.first(where: { $0.id == newID }) else {
+                    return
+                }
+                viewModel.selectProfile(profile)
+            }
         }
         .preferredColorScheme(.dark)
         .tint(RailwayTheme.primary)
     }
 
-    private var hero: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Active Engine Sound")
-                .font(RailwayTheme.display(34))
-                .foregroundStyle(RailwayTheme.ink)
-                .tracking(-0.8)
+    private var profileCarousel: some View {
+        TabView(selection: $selectedProfileID) {
+            ForEach(viewModel.soundProfiles) { profile in
+                VStack(spacing: 12) {
+                    Text(profile.name)
+                        .font(RailwayTheme.display(34))
+                        .foregroundStyle(RailwayTheme.ink)
+                        .tracking(-0.8)
+                        .multilineTextAlignment(.center)
+                        .minimumScaleFactor(0.7)
+                        .lineLimit(2)
 
-            Text(heroSubtitle)
+                    Text(profile.selectionSubtitle)
+                        .font(RailwayTheme.caption)
+                        .foregroundStyle(RailwayTheme.inkSecondary)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.horizontal, 28)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .tag(profile.id)
+            }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .always))
+        .indexViewStyle(.page(backgroundDisplayMode: .never))
+    }
+
+    private var connectionLine: some View {
+        HStack(spacing: 8) {
+            Circle()
+                .fill(statusColor)
+                .frame(width: 6, height: 6)
+
+            Text(viewModel.connectionBadgeText)
                 .font(RailwayTheme.caption)
                 .foregroundStyle(RailwayTheme.inkSecondary)
         }
-        .padding(.top, 12)
-        .padding(.bottom, 4)
     }
 
-    private var heroSubtitle: String {
-        if viewModel.isPlaying {
-            return "Playing engine sound · \(viewModel.selectedProfile.name)"
+    private var playButton: some View {
+        Button {
+            viewModel.togglePlayback()
+        } label: {
+            Image(systemName: viewModel.isPlaying ? "stop.fill" : "play.fill")
+                .offset(x: viewModel.isPlaying ? 0 : 2)
         }
-        return "Telemetry-driven cabin sound · Tundra TRD"
+        .buttonStyle(RailwayCircularPlayButtonStyle(isPlaying: viewModel.isPlaying))
+        .accessibilityLabel(viewModel.isPlaying ? "Stop" : "Play")
     }
 
-    private var connectionBadge: some View {
-        HStack(spacing: 10) {
-            Circle()
-                .fill(statusColor)
-                .frame(width: 8, height: 8)
-                .shadow(color: statusColor.opacity(0.7), radius: 4)
-
-            Text(viewModel.connectionBadgeText)
-                .font(RailwayTheme.captionMedium)
-                .foregroundStyle(RailwayTheme.inkSecondary)
-
-            Spacer()
-        }
-        .railwayChip()
-    }
-
-    private var profileCard: some View {
-        RailwayCard {
-            VStack(alignment: .leading, spacing: 12) {
-                Text("Sound Profile")
-                    .font(RailwayTheme.bodyMedium)
-                    .foregroundStyle(RailwayTheme.ink)
-
-                Picker("Sound Profile", selection: Binding(
-                    get: { viewModel.selectedProfile.id },
-                    set: { newID in
-                        guard let profile = viewModel.soundProfiles.first(where: { $0.id == newID }) else {
-                            return
-                        }
-                        viewModel.selectProfile(profile)
-                    }
-                )) {
-                    ForEach(viewModel.soundProfiles) { profile in
-                        Text(profile.name).tag(profile.id)
-                    }
-                }
-                .pickerStyle(.menu)
-                .font(RailwayTheme.body)
-                .tint(RailwayTheme.ink)
-            }
-        }
-    }
-
-    private func volumeCard(volume: Binding<Float>) -> some View {
-        RailwayCard {
-            VStack(alignment: .leading, spacing: 10) {
-                HStack {
-                    Text("Master Volume")
-                        .font(RailwayTheme.bodyMedium)
-                        .foregroundStyle(RailwayTheme.ink)
-                    Spacer()
-                    Text("\(Int(volume.wrappedValue * 100))%")
-                        .font(RailwayTheme.caption)
-                        .foregroundStyle(RailwayTheme.inkSecondary)
-                        .monospacedDigit()
-                }
-
+    private func volumeSection(volume: Binding<Float>) -> some View {
+        VStack(spacing: 10) {
+            HStack {
+                Image(systemName: "speaker.fill")
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundStyle(RailwayTheme.inkTertiary)
                 Slider(value: volume, in: 0...1)
-                    .tint(RailwayTheme.primary)
+                    .tint(RailwayTheme.ink)
+                Image(systemName: "speaker.wave.3.fill")
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundStyle(RailwayTheme.inkTertiary)
             }
+
+            Text("\(Int(volume.wrappedValue * 100))%")
+                .font(RailwayTheme.micro)
+                .foregroundStyle(RailwayTheme.inkTertiary)
+                .monospacedDigit()
         }
     }
 

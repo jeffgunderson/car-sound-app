@@ -1,7 +1,6 @@
 import SwiftUI
 
-/// Clear Liquid Glass panels — same recipe as the main-page probe (`Glass.clear`).
-/// Glass is applied on the view itself (not a background fill).
+/// Clear Liquid Glass for secondary surfaces (Settings cards).
 struct GlassPanel<Content: View>: View {
     var cornerRadius: CGFloat = RailwayTheme.radiusCard
     var interactive: Bool = false
@@ -17,11 +16,7 @@ struct GlassPanel<Content: View>: View {
             content()
                 .background {
                     RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .fill(RailwayTheme.surface.opacity(0.12))
-                        .background(
-                            .ultraThinMaterial,
-                            in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        )
+                        .fill(RailwayTheme.surface.opacity(0.85))
                 }
         }
     }
@@ -36,7 +31,6 @@ struct GlassPanel<Content: View>: View {
     }
 }
 
-/// Clear glass card + light top bevel.
 struct RailwayCard<Content: View>: View {
     var padding: CGFloat = 16
     var cornerRadius: CGFloat = RailwayTheme.radiusCard
@@ -49,7 +43,7 @@ struct RailwayCard<Content: View>: View {
                 .padding(padding)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .railwayInsetBevel(cornerRadius: cornerRadius, intensity: 0.7)
+        .railwayInsetBevel(cornerRadius: cornerRadius, intensity: 0.55)
     }
 }
 
@@ -67,7 +61,6 @@ struct RailwaySectionHeader: View {
     }
 }
 
-/// Pass-through wrapper — avoids `GlassEffectContainer` morphing/overlays.
 struct RailwayGlassStack<Content: View>: View {
     var spacing: CGFloat = 0
     @ViewBuilder var content: () -> Content

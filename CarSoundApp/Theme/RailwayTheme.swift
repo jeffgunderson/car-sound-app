@@ -1,45 +1,46 @@
 import SwiftUI
 
 enum RailwayTheme {
-    // MARK: - Canvas
+    // MARK: - Canvas (monochrome)
 
-    static let background = Color(hex: 0x10151E)
-    static let backgroundDeep = Color(hex: 0x080C14)
-    static let surface = Color(hex: 0x141B28)
-    static let surfaceBlue = Color(hex: 0x152238)
-    static let surfaceBlueStrong = Color(hex: 0x1A3A5C)
-    static let nebulaDeep = Color(hex: 0x0A1A38)
+    static let background = Color(hex: 0x0A0A0A)
+    static let backgroundDeep = Color(hex: 0x000000)
+    static let surface = Color(hex: 0x1C1C1E)
+    static let surfaceElevated = Color(hex: 0x2C2C2E)
+    static let surfaceBlue = Color(hex: 0x1C1C1E)
+    static let surfaceBlueStrong = Color(hex: 0x2C2C2E)
+    static let nebulaDeep = Color(hex: 0x111111)
 
     // MARK: - Ink
 
-    static let ink = Color(hex: 0xF7F7F8)
-    static let inkSecondary = Color(hex: 0xA1A0AB)
-    static let inkTertiary = Color(hex: 0x6B7280)
+    static let ink = Color(hex: 0xFFFFFF)
+    static let inkSecondary = Color(hex: 0x8E8E93)
+    static let inkTertiary = Color(hex: 0x636366)
 
-    // MARK: - Accent (Twitter-like blue, darkened for the night UI)
+    // MARK: - Accent (near-white for Apple sleek)
 
-    static let primary = Color(hex: 0x1A7AB8)
-    static let primaryHover = Color(hex: 0x2290D0)
-    static let glow = Color(hex: 0x2B6FD4)
-    static let onPrimary = Color.white
+    static let primary = Color(hex: 0xF5F5F7)
+    static let primaryHover = Color(hex: 0xFFFFFF)
+    static let glow = Color(hex: 0x3A3A3C)
+    static let onPrimary = Color.black
 
     // MARK: - Borders / status
 
-    static let border = Color(hex: 0x2A3344)
-    static let borderFaint = Color(hex: 0x141B28)
-    static let statusConnected = Color(hex: 0x42946E)
-    static let statusConnecting = Color(hex: 0xD4A017)
-    static let statusDisconnected = Color(hex: 0xC47A3A)
-    static let statusUnavailable = Color(hex: 0xC44536)
+    static let border = Color(hex: 0x38383A)
+    static let borderFaint = Color(hex: 0x1C1C1E)
+    static let statusConnected = Color(hex: 0x30D158)
+    static let statusConnecting = Color(hex: 0xFFD60A)
+    static let statusDisconnected = Color(hex: 0xFF9F0A)
+    static let statusUnavailable = Color(hex: 0xFF453A)
 
-    // MARK: - Radii (4px grid)
+    // MARK: - Radii
 
-    static let radiusControl: CGFloat = 6
-    static let radiusCard: CGFloat = 12
-    static let radiusPanel: CGFloat = 16
+    static let radiusControl: CGFloat = 10
+    static let radiusCard: CGFloat = 16
+    static let radiusPanel: CGFloat = 20
     static let radiusPill: CGFloat = 999
 
-    // MARK: - Typography (shadcn-style: Inter for display + UI)
+    // MARK: - Typography
 
     static func display(_ size: CGFloat) -> Font {
         .custom("Inter-SemiBold", size: size)

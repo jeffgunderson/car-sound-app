@@ -135,6 +135,19 @@ struct SoundProfile: Identifiable, Equatable, Sendable {
         return false
     }
 
+    /// Short line under the profile name in the main carousel.
+    var selectionSubtitle: String {
+        if isSynthesized {
+            if let cylinders = cylinderCount {
+                return baseSampleName != nil
+                    ? "Synthesized · \(cylinders)-cyl · sample base"
+                    : "Synthesized · \(cylinders)-cylinder"
+            }
+            return "Synthesized"
+        }
+        return "Sample loops · \(Int(idleRPM))–\(Int(maxRPM)) RPM"
+    }
+
     var cylinderCount: Int? {
         if case .synthesized(let cylinders) = playbackKind { return cylinders }
         return nil

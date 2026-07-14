@@ -15,16 +15,15 @@ struct RailwayPrimaryButtonStyle: ButtonStyle {
             verticalPadding: 16,
             horizontalPadding: 0,
             cornerRadius: radius,
-            tint: RailwayTheme.primary,
-            tintStrength: configuration.isPressed ? 0.22 : 0.14,
+            tint: RailwayTheme.ink,
+            tintStrength: configuration.isPressed ? 0.18 : 0.1,
             interactive: true,
             pressed: configuration.isPressed,
-            bevelBorder: RailwayTheme.primary.opacity(configuration.isPressed ? 0.55 : 0.4)
+            bevelBorder: RailwayTheme.border
         )
     }
 }
 
-/// Clear liquid glass control (probe recipe).
 struct RailwayGhostButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         let radius = RailwayTheme.radiusControl + 4
@@ -57,12 +56,37 @@ struct RailwayChipStyle: ViewModifier {
             } else {
                 padded.background {
                     Capsule(style: .continuous)
-                        .fill(RailwayTheme.surface.opacity(0.14))
-                        .background(.ultraThinMaterial, in: Capsule(style: .continuous))
+                        .fill(RailwayTheme.surface)
                 }
             }
         }
-        .railwayInsetCapsuleBevel(intensity: 0.65)
+        .railwayInsetCapsuleBevel(intensity: 0.5)
+    }
+}
+
+/// Large circular play/stop — monochrome, springy press.
+struct RailwayCircularPlayButtonStyle: ButtonStyle {
+    var isPlaying: Bool
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.system(size: 32, weight: .semibold))
+            .foregroundStyle(isPlaying ? RailwayTheme.ink : RailwayTheme.onPrimary)
+            .frame(width: 88, height: 88)
+            .background {
+                Circle()
+                    .fill(isPlaying ? RailwayTheme.surfaceElevated : RailwayTheme.ink)
+            }
+            .overlay {
+                Circle()
+                    .strokeBorder(
+                        Color.white.opacity(isPlaying ? 0.18 : 0.08),
+                        lineWidth: 1
+                    )
+            }
+            .scaleEffect(configuration.isPressed ? 0.92 : 1)
+            .animation(.spring(response: 0.28, dampingFraction: 0.72), value: configuration.isPressed)
+            .animation(.easeOut(duration: 0.2), value: isPlaying)
     }
 }
 
@@ -77,13 +101,11 @@ struct RailwayPlaybackButtonStyle: ButtonStyle {
             verticalPadding: 16,
             horizontalPadding: 0,
             cornerRadius: radius,
-            tint: isPlaying ? nil : RailwayTheme.primary,
-            tintStrength: isPlaying ? 0 : (configuration.isPressed ? 0.2 : 0.14),
+            tint: isPlaying ? nil : RailwayTheme.ink,
+            tintStrength: isPlaying ? 0 : (configuration.isPressed ? 0.16 : 0.1),
             interactive: true,
             pressed: configuration.isPressed,
-            bevelBorder: isPlaying
-                ? RailwayTheme.border
-                : RailwayTheme.primary.opacity(configuration.isPressed ? 0.55 : 0.4)
+            bevelBorder: RailwayTheme.border
         )
     }
 }
@@ -117,18 +139,14 @@ private func labeledControl<Label: View>(
         } else {
             core.background {
                 RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                    .fill((tint ?? RailwayTheme.surface).opacity(tint != nil ? 0.4 : 0.14))
-                    .background(
-                        .ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                    )
+                    .fill(RailwayTheme.surface)
             }
         }
     }
     .railwayInsetBevel(
         cornerRadius: cornerRadius,
         baseBorder: bevelBorder,
-        intensity: pressed ? 0.55 : 0.7
+        intensity: pressed ? 0.45 : 0.55
     )
     .scaleEffect(pressed ? 0.98 : 1)
     .animation(.easeOut(duration: 0.12), value: pressed)
