@@ -8,6 +8,8 @@ struct CarSoundAppApp: App {
         WindowGroup {
             MainView()
                 .environment(viewModel)
+                .preferredColorScheme(.dark)
+                .tint(RailwayTheme.primary)
         }
     }
 }

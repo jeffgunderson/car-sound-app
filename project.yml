@@ -19,12 +19,22 @@ targets:
           - Resources/**
       - path: CarSoundApp/Resources/Sounds/TundraTRD
         buildPhase: resources
+      - path: CarSoundApp/Resources/Fonts
+        buildPhase: resources
+    info:
+      path: CarSoundApp/Info.plist
+      properties:
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        CFBundleDisplayName: Active Engine Sound
+        NSBluetoothAlwaysUsageDescription: Connect to vLinker OBD-II adapter for live vehicle data.
+        NSBluetoothPeripheralUsageDescription: Connect to vLinker OBD-II adapter for live vehicle data.
+        UIAppFonts:
+          - Inter-Regular.ttf
+          - Inter-Medium.ttf
+          - Inter-SemiBold.ttf
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.jeffgunderson.CarSoundApp
-        INFOPLIST_KEY_CFBundleDisplayName: Active Engine Sound
-        INFOPLIST_KEY_UILaunchScreen_Generation: YES
-        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
-        GENERATE_INFOPLIST_FILE: YES
-        INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription: Connect to vLinker OBD-II adapter for live vehicle data.
-        INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription: Connect to vLinker OBD-II adapter for live vehicle data.
+        TARGETED_DEVICE_FAMILY: "1"

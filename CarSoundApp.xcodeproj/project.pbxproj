@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		058775E31D94D693E10A4548 /* GlassPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6662917075F8DD7F4EF4D6 /* GlassPanel.swift */; };
 		164C3D5FACC1746CF90638C6 /* SoundEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31552C778F732D6DFA23EED /* SoundEngine.swift */; };
 		1846B1A41E31443DE3C630DA /* V8_jeff_high.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A48B16D9A5E193D6034BC30 /* V8_jeff_high.wav */; };
+		22C72A5EBDA7CF1A93B7B836 /* RailwayBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE82EB3E52FF3BD2D52CB9A /* RailwayBackground.swift */; };
 		2BB4CBF537BFED7D7C385ED3 /* SynthPatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EAC8E158AFFFCDBF7C56FD /* SynthPatch.swift */; };
 		2BB63DC8580FDD45C0A0260E /* VLinkerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE84E23D0A97193DF3BCB8D /* VLinkerProvider.swift */; };
 		2F1E874841A928445028A85E /* SynthTunerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32D73317506F69322C39F54 /* SynthTunerView.swift */; };
+		35695C4027D029B446FF2C31 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C329A8042E71257CEC85C58A /* Inter-Regular.ttf */; };
 		3AF13F1CB8E60FF5839B8E6E /* trd_v6_aggressive_high.wav in Resources */ = {isa = PBXBuildFile; fileRef = 02ABC719F6BA9483AC379367 /* trd_v6_aggressive_high.wav */; };
 		427837BA9718408E066A24DE /* trd_v6_aggressive_idle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61948CFFE21F902BB9F12DFF /* trd_v6_aggressive_idle.wav */; };
 		43B379466384F20C75A818F4 /* SimulatorVehicleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61985BCF8BF40AB33CBAB9FB /* SimulatorVehicleProvider.swift */; };
+		4AF6BFF04471816F2C3E4663 /* RailwayButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2893156C3BA0A1FD9C284848 /* RailwayButtonStyles.swift */; };
 		4B4EE0F9D2673A6B8D867015 /* trd_v8_deep_idle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 43756C4C04CB0EBD84471148 /* trd_v8_deep_idle.wav */; };
 		6EE62A0B078CA8738E3BC699 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B8DD51708623C540CD7C7 /* SettingsView.swift */; };
 		76BED9B9D9EF67C035742A67 /* CarSoundAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0782CB91E63ACA8D29748C50 /* CarSoundAppApp.swift */; };
@@ -22,8 +26,10 @@
 		7FD1805E32614B8C61480B93 /* trd_v8_deep_cruise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC52B466308B5322414659C /* trd_v8_deep_cruise.wav */; };
 		897D2ABEC0F2EC740F87021F /* V8_jeff_cruise.wav in Resources */ = {isa = PBXBuildFile; fileRef = C4C7E7C41E74978835C250B6 /* V8_jeff_cruise.wav */; };
 		91D51EAACE6E6C36C1293E32 /* EngineSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216E088AA51FD965D3C8BCCB /* EngineSynthesizer.swift */; };
+		9B1FD5D09D27674FCF6D6702 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBA959CD28CE55C32D43E668 /* Inter-Medium.ttf */; };
 		9ECDE26BAFAA47FDE008CC24 /* VehicleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EAAA17CAF4918F39910007 /* VehicleState.swift */; };
 		A34A20AC658877A9A2B810DB /* trd_v6_aggressive_cruise.wav in Resources */ = {isa = PBXBuildFile; fileRef = C3E35469EFD042B402035E5B /* trd_v6_aggressive_cruise.wav */; };
+		B4941F6A403720C654D3D82D /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5CE932F2500091EE516C64A /* Inter-SemiBold.ttf */; };
 		B651B88423B476F8AE32D4EC /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0239676A190439FA66BE5F /* AppViewModel.swift */; };
 		B885F34473BC5F5B2368828B /* SoundProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9658168CAD67B8EE3EE5E20C /* SoundProfile.swift */; };
 		C259200AC0E465C99E05FBF4 /* VehicleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52864E92287F5C485FDB10B /* VehicleDataProvider.swift */; };
@@ -33,8 +39,10 @@
 		D3969955A6BE823F5B5B3774 /* trd_v6_balanced_idle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 020D995C69F59A8782A53AF0 /* trd_v6_balanced_idle.wav */; };
 		DAEB8DB2B709E98DAB8AF2A6 /* trd_v6_balanced_high.wav in Resources */ = {isa = PBXBuildFile; fileRef = E96E57FE9257E1E93CA82396 /* trd_v6_balanced_high.wav */; };
 		E1A88E4410D88DAFA971760A /* DevSimulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E324FEBAFE8B86BE5F5D661 /* DevSimulatorView.swift */; };
+		E1B7B89A7B1BA70ABF517719 /* RailwayInsetBevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698624C5B816999275B61A72 /* RailwayInsetBevel.swift */; };
 		E95F9BD69197AF1A45CADCA0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F832AD05FE9BDF74EAF51D /* MainView.swift */; };
 		F46AD461C5AA4579DEEC1028 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B26D7406D8499AEC79BBD /* AppSettings.swift */; };
+		F93B842F74FCDF3AB92C8093 /* RailwayTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8682F8F8A4D28EA44AB17926 /* RailwayTheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,27 +50,36 @@
 		02ABC719F6BA9483AC379367 /* trd_v6_aggressive_high.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v6_aggressive_high.wav; sourceTree = "<group>"; };
 		0782CB91E63ACA8D29748C50 /* CarSoundAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSoundAppApp.swift; sourceTree = "<group>"; };
 		0DC52B466308B5322414659C /* trd_v8_deep_cruise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v8_deep_cruise.wav; sourceTree = "<group>"; };
+		0DEEFBAD9083FB5B8B409E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		11EAC8E158AFFFCDBF7C56FD /* SynthPatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthPatch.swift; sourceTree = "<group>"; };
 		1F4B8DD51708623C540CD7C7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		20EAAA17CAF4918F39910007 /* VehicleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleState.swift; sourceTree = "<group>"; };
 		216E088AA51FD965D3C8BCCB /* EngineSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineSynthesizer.swift; sourceTree = "<group>"; };
+		2893156C3BA0A1FD9C284848 /* RailwayButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailwayButtonStyles.swift; sourceTree = "<group>"; };
 		2E324FEBAFE8B86BE5F5D661 /* DevSimulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevSimulatorView.swift; sourceTree = "<group>"; };
 		3D0239676A190439FA66BE5F /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		43756C4C04CB0EBD84471148 /* trd_v8_deep_idle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v8_deep_idle.wav; sourceTree = "<group>"; };
 		61948CFFE21F902BB9F12DFF /* trd_v6_aggressive_idle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v6_aggressive_idle.wav; sourceTree = "<group>"; };
 		61985BCF8BF40AB33CBAB9FB /* SimulatorVehicleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorVehicleProvider.swift; sourceTree = "<group>"; };
+		698624C5B816999275B61A72 /* RailwayInsetBevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailwayInsetBevel.swift; sourceTree = "<group>"; };
+		6B6662917075F8DD7F4EF4D6 /* GlassPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassPanel.swift; sourceTree = "<group>"; };
 		6FE84E23D0A97193DF3BCB8D /* VLinkerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VLinkerProvider.swift; sourceTree = "<group>"; };
 		8257A2C32B0D5A26D356B3B8 /* trd_v8_deep_high.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v8_deep_high.wav; sourceTree = "<group>"; };
+		8682F8F8A4D28EA44AB17926 /* RailwayTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailwayTheme.swift; sourceTree = "<group>"; };
 		9658168CAD67B8EE3EE5E20C /* SoundProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProfile.swift; sourceTree = "<group>"; };
 		9A48B16D9A5E193D6034BC30 /* V8_jeff_high.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = V8_jeff_high.wav; sourceTree = "<group>"; };
 		A32D73317506F69322C39F54 /* SynthTunerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthTunerView.swift; sourceTree = "<group>"; };
+		C329A8042E71257CEC85C58A /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		C3E35469EFD042B402035E5B /* trd_v6_aggressive_cruise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v6_aggressive_cruise.wav; sourceTree = "<group>"; };
 		C4C7E7C41E74978835C250B6 /* V8_jeff_cruise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = V8_jeff_cruise.wav; sourceTree = "<group>"; };
+		CBA959CD28CE55C32D43E668 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		D52864E92287F5C485FDB10B /* VehicleDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataProvider.swift; sourceTree = "<group>"; };
+		DCE82EB3E52FF3BD2D52CB9A /* RailwayBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailwayBackground.swift; sourceTree = "<group>"; };
 		E31552C778F732D6DFA23EED /* SoundEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEngine.swift; sourceTree = "<group>"; };
 		E3F832AD05FE9BDF74EAF51D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E448920CC9B28D9D61AE6C88 /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
 		E4905FE5DF6C7E69BA1C9BD6 /* V8_jeff_idle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = V8_jeff_idle.wav; sourceTree = "<group>"; };
+		E5CE932F2500091EE516C64A /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		E67B26D7406D8499AEC79BBD /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		E96E57FE9257E1E93CA82396 /* trd_v6_balanced_high.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v6_balanced_high.wav; sourceTree = "<group>"; };
 		F31B3E51A845C62350627181 /* trd_v6_balanced_cruise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trd_v6_balanced_cruise.wav; sourceTree = "<group>"; };
@@ -88,6 +105,18 @@
 			);
 			name = TundraTRD;
 			path = CarSoundApp/Resources/Sounds/TundraTRD;
+			sourceTree = "<group>";
+		};
+		3AF0F4D87BAD3B3028C4C103 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				6B6662917075F8DD7F4EF4D6 /* GlassPanel.swift */,
+				DCE82EB3E52FF3BD2D52CB9A /* RailwayBackground.swift */,
+				2893156C3BA0A1FD9C284848 /* RailwayButtonStyles.swift */,
+				698624C5B816999275B61A72 /* RailwayInsetBevel.swift */,
+				8682F8F8A4D28EA44AB17926 /* RailwayTheme.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		3CB3EE30896928836EB0D590 /* Models */ = {
@@ -133,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				B8C5E7427C1B3A7EA672C240 /* CarSoundApp */,
+				E836D554EB1958B91045E30B /* Fonts */,
 				2D3C8465306725B356286EDC /* TundraTRD */,
 				C42A8DBC491C4B69CCFBCCC2 /* Products */,
 			);
@@ -151,10 +181,12 @@
 		B8C5E7427C1B3A7EA672C240 /* CarSoundApp */ = {
 			isa = PBXGroup;
 			children = (
+				0DEEFBAD9083FB5B8B409E13 /* Info.plist */,
 				3DBEBE81CEB9D412179B9EDF /* App */,
 				F261D61DAA74D0309F566409 /* Audio */,
 				3CB3EE30896928836EB0D590 /* Models */,
 				B3EC1F9A8C124A19754A4AEA /* Providers */,
+				3AF0F4D87BAD3B3028C4C103 /* Theme */,
 				9F2D48FD909E3B1B88D84C76 /* ViewModels */,
 				446B4E1EB0E83F04D6C0FA9E /* Views */,
 			);
@@ -167,6 +199,17 @@
 				FB2D8CD1473A7CC7295B269F /* CarSoundApp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E836D554EB1958B91045E30B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CBA959CD28CE55C32D43E668 /* Inter-Medium.ttf */,
+				C329A8042E71257CEC85C58A /* Inter-Regular.ttf */,
+				E5CE932F2500091EE516C64A /* Inter-SemiBold.ttf */,
+			);
+			name = Fonts;
+			path = CarSoundApp/Resources/Fonts;
 			sourceTree = "<group>";
 		};
 		F261D61DAA74D0309F566409 /* Audio */ = {
@@ -237,6 +280,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B1FD5D09D27674FCF6D6702 /* Inter-Medium.ttf in Resources */,
+				35695C4027D029B446FF2C31 /* Inter-Regular.ttf in Resources */,
+				B4941F6A403720C654D3D82D /* Inter-SemiBold.ttf in Resources */,
 				897D2ABEC0F2EC740F87021F /* V8_jeff_cruise.wav in Resources */,
 				1846B1A41E31443DE3C630DA /* V8_jeff_high.wav in Resources */,
 				D1FFF1E3D5C175A04EC31DEA /* V8_jeff_idle.wav in Resources */,
@@ -265,7 +311,12 @@
 				D34620BC7AFA01C9BACA58F6 /* ConnectionStatus.swift in Sources */,
 				E1A88E4410D88DAFA971760A /* DevSimulatorView.swift in Sources */,
 				91D51EAACE6E6C36C1293E32 /* EngineSynthesizer.swift in Sources */,
+				058775E31D94D693E10A4548 /* GlassPanel.swift in Sources */,
 				E95F9BD69197AF1A45CADCA0 /* MainView.swift in Sources */,
+				22C72A5EBDA7CF1A93B7B836 /* RailwayBackground.swift in Sources */,
+				4AF6BFF04471816F2C3E4663 /* RailwayButtonStyles.swift in Sources */,
+				E1B7B89A7B1BA70ABF517719 /* RailwayInsetBevel.swift in Sources */,
+				F93B842F74FCDF3AB92C8093 /* RailwayTheme.swift in Sources */,
 				6EE62A0B078CA8738E3BC699 /* SettingsView.swift in Sources */,
 				43B379466384F20C75A818F4 /* SimulatorVehicleProvider.swift in Sources */,
 				164C3D5FACC1746CF90638C6 /* SoundEngine.swift in Sources */,
@@ -286,19 +337,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Active Engine Sound";
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to vLinker OBD-II adapter for live vehicle data.";
-				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to vLinker OBD-II adapter for live vehicle data.";
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_FILE = CarSoundApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeffgunderson.CarSoundApp;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -372,19 +418,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Active Engine Sound";
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to vLinker OBD-II adapter for live vehicle data.";
-				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to vLinker OBD-II adapter for live vehicle data.";
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_FILE = CarSoundApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeffgunderson.CarSoundApp;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
